@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 27
-        versionCode 0
-        versionName "1.0.0"
+        versionCode 4
+        versionName "1.0.4"
     }
 
     buildTypes {
@@ -32,17 +32,17 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 //项目主页
-def siteUrl = 'https://github.com/yangchong211/YCUpdateApp'    // project homepage
+def siteUrl = 'https://github.com/zhang721688/UpdateAppDemo'    // project homepage
 //项目的版本控制地址
-def gitUrl = 'https://github.com/yangchong211/YCUpdateApp.git' // project git
+def gitUrl = 'https://github.com/zhang721688/UpdateAppDemo.git' // project git
 
 //发布到组织名称名字，必须填写
-group = "cn.yc"
+group = "com.zxn.update"
 //发布到JCenter上的项目名字，必须填写
-def libName = "YCUpdateLib"
+def libName = "UpdateApp"
 // 版本号，下次更新是只需要更改版本号即可
-version = "1.0.0"
-/**  上面配置后上传至jcenter后的编译路径是这样的： compile 'cn.yc:YCUpdateLib:1.0.0'  **/
+version = "1.0.4"
+/**  上面配置后上传至jcenter后的编译路径是这样的： compile 'com.zxn.update:UpdateApp:1.0.4'  **/
 
 //生成源文件
 task sourcesJar(type: Jar) {
@@ -98,9 +98,9 @@ install {
                 developers {
                     developer {
                         //开发者的个人信息，根据个人信息填写
-                        id 'yangchong'
-                        name 'yc'
-                        email 'yangchong211@163.com'
+                        id 'zxn'
+                        name 'ZhangXiaoNing'
+                        email 'zxn13716071676@sina.com'
                     }
                 }
                 scm {
@@ -121,7 +121,7 @@ bintray {
     key = properties.getProperty("bintray.apikey")  //读取 local.properties 文件里面的 bintray.apikey
     configurations = ['archives']
     pkg {
-        repo = "maven"
+        repo = "UpdateAppDemo"
         name = libName    //发布到JCenter上的项目名字，必须填写
         desc = 'Android Update Dialog'    //项目描述
         websiteUrl = siteUrl
