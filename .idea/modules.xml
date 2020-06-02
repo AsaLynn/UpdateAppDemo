@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/UpdateApp/UpdateApp.iml" filepath="$PROJECT_DIR$/UpdateApp/UpdateApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/UpdateAppDemo.iml" filepath="$PROJECT_DIR$/UpdateAppDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UpdateApp/UpdateApp.iml" filepath="$PROJECT_DIR$/UpdateApp/UpdateApp.iml" group="UpdateAppDemo/UpdateApp" />
+      <module fileurl="file://$PROJECT_DIR$/UpdateAppDemo.iml" filepath="$PROJECT_DIR$/UpdateAppDemo.iml" group="UpdateAppDemo" />
       <module fileurl="file://$PROJECT_DIR$/YCUpdateApp.iml" filepath="$PROJECT_DIR$/YCUpdateApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="UpdateAppDemo/app" />
     </modules>
   </component>
 </project>

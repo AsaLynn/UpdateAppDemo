@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 29
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 4
-        versionName "1.0.4"
+        targetSdkVersion 29
+        versionCode 5
+        versionName "1.0.5"
     }
 
     buildTypes {
@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.liulishuo.filedownloader:library:1.7.5'
 }
 
@@ -41,8 +41,8 @@ group = "com.zxn.update"
 //发布到JCenter上的项目名字，必须填写
 def libName = "UpdateApp"
 // 版本号，下次更新是只需要更改版本号即可
-version = "1.0.4"
-/**  上面配置后上传至jcenter后的编译路径是这样的： compile 'com.zxn.update:UpdateApp:1.0.4'  **/
+version = "1.0.5"
+/**  上面配置后上传至jcenter后的编译路径是这样的： compile 'com.zxn.update:UpdateApp:1.0.5'  **/
 
 //生成源文件
 task sourcesJar(type: Jar) {
