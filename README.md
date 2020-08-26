@@ -154,6 +154,13 @@ public static void installNormal(Context context, String apkPath , String pathNa
 - v1.0.2 更新于2020年08月26日
     - 弹框页面的ui通过Fragment对外暴露.
 
+#### 打标签小精灵商户通:
+
+- 1.0.7:
+```
+git tag -a v1.0.7 -m 'fix'
+git push origin v1.0.7
+```
 
 #### 关于博客汇总链接
 - 1.[技术博客汇总](https://www.jianshu.com/p/614cb839182c)
