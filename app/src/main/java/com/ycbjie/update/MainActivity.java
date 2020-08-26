@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-
-import com.zxn.update.BuildConfig;
 import com.zxn.update.PermissionUtils;
 import com.zxn.update.UpdateFragment;
 import com.zxn.update.UpdateUtils;
@@ -118,8 +116,25 @@ public class MainActivity extends AppCompatActivity {
                 UpdateUtils.clearDownload();
             }
         });
+
+        findViewById(R.id.tv_5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DemoContentFragment fragment = new DemoContentFragment();
+                //设置自定义下载文件路径
+                UpdateUtils.APP_UPDATE_DOWN_APK_PATH = "apk" + File.separator + "downApk";
+                String  desc = getResources().getString(R.string.update_content_simple);
+                /*
+                 * @param isForceUpdate             是否强制更新
+                 * @param desc                      更新文案
+                 * @param url                       下载链接
+                 * @param apkFileName               apk下载文件路径名称
+                 * @param packName                  包名
+                 */
+                UpdateFragment.showFragment(MainActivity.this,
+                        false,firstUrl,apkName,desc, BuildConfig.APPLICATION_ID,fragment);
+            }
+        });
     }
-
-
 
 }
