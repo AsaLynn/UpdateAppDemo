@@ -69,11 +69,13 @@ public class UpdateFragment extends BaseDialogFragment implements View.OnClickLi
     /**
      * 版本更新
      *
+     * @param activity      activity
      * @param isForceUpdate 是否强制更新
      * @param apkUrl        下载链接
      * @param apkName       下载apk名称
      * @param desc          更新文案
      * @param packageName   包名
+     * @param fragment   ContentFragment
      */
     public static void showFragment(FragmentActivity activity, boolean isForceUpdate,
                                     String apkUrl, String apkName, String desc,
@@ -95,6 +97,7 @@ public class UpdateFragment extends BaseDialogFragment implements View.OnClickLi
     /**
      * 版本更新
      *
+     * @param activity      activity
      * @param isForceUpdate 是否强制更新
      * @param apkUrl        下载链接
      * @param apkName       下载apk名称
@@ -281,9 +284,9 @@ public class UpdateFragment extends BaseDialogFragment implements View.OnClickLi
 
     private void changeUploadStatus(int upload_status) {
         this.downloadStatus = upload_status;
-        if (null != contentFragment){
+        if (null != contentFragment) {
             contentFragment.changeUploadStatus(upload_status);
-        }else {
+        } else {
             switch (upload_status) {
                 case UpdateUtils.DownloadStatus.START:
                     if (null != mTvOk) {
@@ -382,9 +385,9 @@ public class UpdateFragment extends BaseDialogFragment implements View.OnClickLi
                     float total = task.getSmallFileTotalBytes();
                     float downsize = task.getSmallFileSoFarBytes();
                     int progress = (int) ((downsize / total) * 100);
-                    if (null != contentFragment){
+                    if (null != contentFragment) {
                         contentFragment.setProgress(progress);
-                    }else {
+                    } else {
                         if (null != mProgress) {
                             mProgress.setProgress(progress);
                         }

@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -34,27 +35,38 @@ public final class PermissionUtils {
 
 
     private static PermissionUtils sInstance;
-
+    @SuppressLint("StaticFieldLeak")
+    private static Context sApplication;
     private OnRationaleListener mOnRationaleListener;
-    private SimpleCallback      mSimpleCallback;
-    private FullCallback        mFullCallback;
-    private ThemeCallback       mThemeCallback;
+    private SimpleCallback mSimpleCallback;
+    private FullCallback mFullCallback;
+    private ThemeCallback mThemeCallback;
     private Set<String> mPermissions;
     private List<String> mPermissionsRequest;
     private List<String> mPermissionsGranted;
     private List<String> mPermissionsDenied;
     private List<String> mPermissionsDeniedForever;
 
-    @SuppressLint("StaticFieldLeak")
-    private static Context sApplication;
-    
-    
+
     private PermissionUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
-    
+
+    private PermissionUtils(final String... permissions) {
+        mPermissions = new LinkedHashSet<>();
+        for (String permission : permissions) {
+            for (String aPermission : PermissionConstants.getPermissions(permission)) {
+                if (getPermissions().contains(aPermission)) {
+                    mPermissions.add(aPermission);
+                }
+            }
+        }
+        sInstance = this;
+    }
+
     /**
      * 初始化工具类
+     * @param context   context
      */
     public static void init(@NonNull final Context context) {
         sApplication = context.getApplicationContext();
@@ -126,18 +138,6 @@ public final class PermissionUtils {
      */
     public static PermissionUtils permission(@PermissionConstants.Permission final String... permissions) {
         return new PermissionUtils(permissions);
-    }
-
-    private PermissionUtils(final String... permissions) {
-        mPermissions = new LinkedHashSet<>();
-        for (String permission : permissions) {
-            for (String aPermission : PermissionConstants.getPermissions(permission)) {
-                if (getPermissions().contains(aPermission)) {
-                    mPermissions.add(aPermission);
-                }
-            }
-        }
-        sInstance = this;
     }
 
     /**
@@ -287,6 +287,31 @@ public final class PermissionUtils {
         requestCallback();
     }
 
+    public interface OnRationaleListener {
+
+        void rationale(ShouldRequest shouldRequest);
+
+        interface ShouldRequest {
+            void again(boolean again);
+        }
+    }
+
+    public interface SimpleCallback {
+        void onGranted();
+
+        void onDenied();
+    }
+
+    public interface FullCallback {
+        void onGranted(List<String> permissionsGranted);
+
+        void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied);
+    }
+
+    public interface ThemeCallback {
+        void onActivityCreate(Activity activity);
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.M)
     public static class PermissionActivity extends Activity {
 
@@ -317,28 +342,5 @@ public final class PermissionUtils {
             sInstance.onRequestPermissionsResult(this);
             finish();
         }
-    }
-
-    public interface OnRationaleListener {
-
-        void rationale(ShouldRequest shouldRequest);
-
-        interface ShouldRequest {
-            void again(boolean again);
-        }
-    }
-
-    public interface SimpleCallback {
-        void onGranted();
-        void onDenied();
-    }
-
-    public interface FullCallback {
-        void onGranted(List<String> permissionsGranted);
-        void onDenied(List<String> permissionsDeniedForever, List<String> permissionsDenied);
-    }
-
-    public interface ThemeCallback {
-        void onActivityCreate(Activity activity);
     }
 }

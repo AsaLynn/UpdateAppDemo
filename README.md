@@ -7,7 +7,6 @@
 - 5.其他介绍
 
 
-
 ### 1.本库优势亮点
 - 支持后台下载，支持断点下载。支持监听下载过程，下载成功，失败，异常，下载中，暂停等多种状态
 - 用户可以设置是否支持强制更新，还支持用户设置版本更新内容，当内容过长，可以实现滚动模式
@@ -28,7 +27,11 @@
 ### 2.使用介绍
 #### 2.1 关于库导入
 - 可以直接引入lib库
+- 网络下载依赖
 
+```
+    implementation 'com.zxn.update:UpdateApp:1.0.7'
+```
 
 #### 2.2 使用说明
 - 代码如下所示，就是这么简单
@@ -141,13 +144,6 @@ public static void installNormal(Context context, String apkPath , String pathNa
 ![image](https://upload-images.jianshu.io/upload_images/4432347-06b8bed3d839ae0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 ![image](https://upload-images.jianshu.io/upload_images/4432347-6ddebd88af2947b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-
-
-### 5.其他介绍
-#### 关于其他内容介绍
-![image](https://upload-images.jianshu.io/upload_images/4432347-7100c8e5a455c3ee.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
 #### 版本更新说明
 - v1.0.0 更新于2017年8月13日
 - v1.0.1 更新于2017年12月9日
@@ -155,7 +151,8 @@ public static void installNormal(Context context, String apkPath , String pathNa
     - 针对弹窗是DialogFragment，因此当宿主activity异常重启时，会导致弹窗偶发性崩溃。用commitAllowingStateLoss替换commit方法
     - 异常时调用onSaveInstanceState保存状态，重启时取出状态
     - 当下载失败，异常，错误时，点击按钮重新创建下载任务
-
+- v1.0.2 更新于2020年08月26日
+    - 弹框页面的ui通过Fragment对外暴露.
 
 
 #### 关于博客汇总链接
@@ -164,26 +161,3 @@ public static void installNormal(Context context, String apkPath , String pathNa
 - 3.[生活博客汇总](https://blog.csdn.net/m0_37700275/article/details/79832978)
 - 4.[喜马拉雅音频汇总](https://www.jianshu.com/p/f665de16d1eb)
 - 5.[其他汇总](https://www.jianshu.com/p/53017c3fc75d)
-
-
-#### 其他推荐
-- 博客笔记大汇总【15年10月到至今】，包括Java基础及深入知识点，Android技术博客，Python学习笔记等等，还包括平时开发中遇到的bug汇总，当然也在工作之余收集了大量的面试题，长期更新维护并且修正，持续完善……开源的文件是markdown格式的！同时也开源了生活博客，从12年起，积累共计47篇[近20万字]，转载请注明出处，谢谢！
-- 链接地址：https://github.com/yangchong211/YCBlogs
-- 如果觉得好，可以star一下，谢谢！当然也欢迎提出建议，万事起于忽微，量变引起质变！
-
-
-#### 关于LICENSE
-```
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-   http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
-
